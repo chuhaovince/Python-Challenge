@@ -12,10 +12,6 @@ total_mon = len(budget_data)
 # the net total amount over the entire period
 net_profit = sum(budget_data["Profit/Losses"])
 
-
-# the average of the changes over the entire period
-avg_changes = net_profit/total_mon
-
 # initiate a list for step increases
 inc = []
 
@@ -27,6 +23,10 @@ for i in range(total_mon-1):
 # find maximun increase and decrease in profits
 maximun_increase = max(inc)
 maximun_decrease = min(inc)
+
+# calculate the average of the changes in "Profit/Losses" over the entire period
+avg_changes = sum(inc)/len(inc)
+
 # find corresponding month for maximun increase and decrease in profits
 max_month = budget_data["Date"][inc.index(maximun_increase)+1]
 min_month = budget_data["Date"][inc.index(maximun_decrease)+1]
@@ -35,7 +35,7 @@ min_month = budget_data["Date"][inc.index(maximun_decrease)+1]
 fncl_anls = f'Financial Analysis\n----------------------'
 tol_mon = f'Total Months: {total_mon}'
 total = f'Total: ${net_profit}'
-avg_chan = f'Average Changes: $'
+avg_chan = f'Average Changes: ${avg_changes:.2f}'
 profits_in_de = f'Greatest Increase in Porfits: {max_month} (${maximun_increase})\nGreatest Decrease in Profits: {min_month} (${maximun_decrease})'
 
 #print results as described
