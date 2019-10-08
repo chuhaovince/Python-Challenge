@@ -34,12 +34,12 @@ p = 0
 for i in range(len(candidate_list)):
     candidate = election_data["Candidate"][election_data["Candidate"]==candidate_list[i]] # filter out the votes of unique candidate and store it as a list
     total_candidate_votes = len(candidate) # get the total votes of this candidate
-    percent = total_candidate_votes/total_votes*100 # calculate the percentage of the vote this candidate got
+    percent = total_candidate_votes/total_votes # calculate the percentage of the vote this candidate got
     if percent > p:   # if statement to find the higher voted candidate and his/her name
         p = percent
         candidate_name = candidate_list[i]
-    print(f'{candidate_list[i]}: {percent:.3f}% ({total_candidate_votes})')
-    results.write(f'{candidate_list[i]}: {percent:.3f}% ({total_candidate_votes})\n')
+    print(f'{candidate_list[i]}: {percent:.3%} ({total_candidate_votes})')
+    results.write(f'{candidate_list[i]}: {percent:.3%} ({total_candidate_votes})\n')
 print(f'----------------------------')
 print(f'Winner: {candidate_name}')
 results.write(f'----------------------------\n')
