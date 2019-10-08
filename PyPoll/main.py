@@ -9,10 +9,10 @@ election_data = pd.read_csv(filepath)
 total_votes = len(election_data)
 
 #convert the candidate list into a set to filter the unique candidates' names for following analysis
-candidate_set = set(election_data["Candidate"])
+candidate_list = election_data["Candidate"].unique()
 
 # convert the set to a list again for further analysis
-candidate_list = list(candidate_set)
+#candidate_list = list(candidate_set)
 
 print(f'Election Results\n----------------------------')
 
